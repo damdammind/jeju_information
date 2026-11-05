@@ -1112,7 +1112,7 @@ function renderWeather() {
     <div class="hours" aria-label="시간별 예보">
       ${r.hours.map(([h, t, s, p, pop]) => `<div class="hour"><div>${String(h).padStart(2, '0')}시</div><span class="e">${wxIcon(s, p)}</span><div class="t">${t}°</div><div class="p">${pop}%</div></div>`).join('')}
     </div>
-    <div class="src" style="margin-top:12px">격자 nx ${r.nx}, ny ${r.ny} (예시값)</div>`;
+    <div class="src" style="margin-top:12px">격자 nx ${r.nx}, ny ${r.ny}</div>`;
 
   const g10 = airGrade(r.pm10, 'pm10'), g25 = airGrade(r.pm25, 'pm25');
   $('#xAir').innerHTML = `
