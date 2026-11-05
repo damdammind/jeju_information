@@ -65,6 +65,7 @@
   }
   .home-btn:hover { background: rgba(255,255,255,.1); }
   .home-btn[hidden] { display: none; }
+  .src[hidden] { display: none; }
 
   /* 표지 */
   .hero { padding: 48px 0 28px; }
@@ -894,9 +895,12 @@ function srcBadge(win) {
   const live = CONFIG[win].mode === 'api' && CONFIG[win].gasUrl;
   return live
     ? '<span class="tag-sample tag-live">실시간 API</span><span>공공데이터포털 기준</span>'
-    : '<span class="tag-sample">예시 데이터</span><span>저장 시각 ' + CONFIG.savedAt + '</span>';
+    : '';
 }
-document.querySelectorAll('[data-src]').forEach(el => el.innerHTML = srcBadge(el.dataset.src));
+document.querySelectorAll('[data-src]').forEach(el => {
+  el.innerHTML = srcBadge(el.dataset.src);
+  el.hidden = !el.innerHTML;
+});
 
 /* 공통 도구 */
 const $ = s => document.querySelector(s);
